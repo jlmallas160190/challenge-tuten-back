@@ -1,0 +1,37 @@
+{
+	"info": {
+		"_postman_id": "c10e4c95-0378-4899-a8a4-12cfb4642975",
+		"name": "Challenge Tuten",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/challenge",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"time\": \"10:21:10\",\n    \"timezone\": \"-03:00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/challenge",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"challenge"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

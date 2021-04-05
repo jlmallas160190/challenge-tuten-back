@@ -1,0 +1,55 @@
+plugins {
+    id 'org.springframework.boot' version '2.4.4'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+    id 'jacoco'
+}
+
+
+jacoco {
+    toolVersion = "0.8.6"
+}
+
+group = 'com.tuten'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+ext {
+    set('lombokVersion', '1.18.6')
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'junit:junit:4.12'
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        csv.enabled true
+    }
+}
+jacocoTestCoverageVerification {
+    violationRules {
+
+        rule {
+            excludes = [
+                    'com.tuten.challenge.request',
+                    'com.tuten.challenge.response'
+            ]
+            limit {
+                counter = 'LINE'
+                value = 'COVEREDRATIO'
+                minimum = 0.8
+            }
+        }
+    }
+}
+check.dependsOn jacocoTestReport, jacocoTestCoverageVerification
+
